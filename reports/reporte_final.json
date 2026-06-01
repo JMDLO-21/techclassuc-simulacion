@@ -1,5 +1,6 @@
 {
   "parametros": {
+<<<<<<< HEAD
     "lambda_base": 10,
     "mu": 4,
     "c": 3,
@@ -14,6 +15,18 @@
     "no_estacionario": false,
     "usar_welch": true,
     "usar_optimizacion": true
+=======
+    "lambda_base": 10.0,
+    "mu": 4.0,
+    "c": 3,
+    "t_sim": 480.0,
+    "t_warm": 60.0,
+    "N_replicas": 30,
+    "semilla_base": 42,
+    "umbral_wq": 10.0,
+    "t_max_espera": 20.0,
+    "prob_urgente": 0.15
+>>>>>>> e37cc373d5838385f59daf8b5fdc6bf6d68a4e34
   },
   "t_warm_aplicado": 84.0,
   "rho_teorico": 0.8333333333333334,
@@ -113,7 +126,13 @@
     "c_optimo": 4,
     "wq_optimo": 2.7340880309093945,
     "cumple": true,
+<<<<<<< HEAD
     "umbral_min": 10
   },
   "tiempo_ejecucion_seg": 3.29
+=======
+    "umbral_min": 10.0
+  },
+  "tiempo_ejecucion_seg": 3.37
+>>>>>>> e37cc373d5838385f59daf8b5fdc6bf6d68a4e34
 }

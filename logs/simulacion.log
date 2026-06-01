@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2026-06-01 15:40:32,600 [INFO] main: Parámetros cargados desde c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\config\params.json
 2026-06-01 15:40:32,601 [INFO] main: Estabilidad verificada: ρ = 0.8333 < 1  ✓
 2026-06-01 15:40:32,628 [INFO] sensibilidad: Welch warm-up estimado: 84.0 minutos (índice=14)
@@ -58,3 +59,20 @@
 2026-06-01 15:45:49,744 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:49] "GET /api/grafica/11_welch_warmup.png?t=1780346539120 HTTP/1.1" 200 -
 2026-06-01 15:45:49,748 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:49] "GET /api/grafica/10_reneging_abandonos.png?t=1780346538801 HTTP/1.1" 200 -
 2026-06-01 15:45:49,759 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:49] "GET /api/grafica/09_llegadas_no_estacionarias.png?t=1780346538760 HTTP/1.1" 200 -
+=======
+2026-06-01 05:39:15,731 [INFO] main: Parámetros cargados desde c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\config\params.json
+2026-06-01 05:39:15,731 [INFO] main: Estabilidad verificada: ρ = 0.8333 < 1  ✓
+2026-06-01 05:39:15,745 [INFO] sensibilidad: Welch warm-up estimado: 84.0 minutos (índice=14)
+2026-06-01 05:39:16,049 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\11_welch_warmup.png
+2026-06-01 05:39:16,325 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\01_evolucion_temporal.png
+2026-06-01 05:39:16,563 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\10_reneging_abandonos.png
+2026-06-01 05:39:16,852 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\09_llegadas_no_estacionarias.png
+2026-06-01 05:39:17,154 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\02_histograma_wq.png
+2026-06-01 05:39:17,406 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\05_distribucion_medias_replicas.png
+2026-06-01 05:39:18,170 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\06_heatmap_wq.png
+2026-06-01 05:39:18,489 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\07_heatmap_rho.png
+2026-06-01 05:39:18,651 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\03_wq_vs_servidores.png
+2026-06-01 05:39:18,881 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\04_rho_vs_lambda.png
+2026-06-01 05:39:19,102 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\outputs\08_optimizacion_servidores.png
+2026-06-01 05:39:19,104 [INFO] main: Reporte JSON guardado: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC\proyecto\reports\reporte_final.json
+>>>>>>> e37cc373d5838385f59daf8b5fdc6bf6d68a4e34
