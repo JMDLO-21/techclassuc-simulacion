@@ -1,10 +1,4 @@
-"""
-app_render.py
-=============
-Servidor Flask con UI completa para TechClassUC.
-"""
 from __future__ import annotations
-
 import os, sys, json, threading, time
 from flask import Flask, jsonify, request, send_file, render_template, abort
 
@@ -18,15 +12,13 @@ app = Flask(__name__,
 _estado: dict = {"ejecutando": False, "completado": False, "error": None, "inicio": None}
 _lock = threading.Lock()
 
-
 def _run_sim(params: dict) -> None:
     os.makedirs(os.path.join(BASE_DIR, 'config'), exist_ok=True)
     with open(os.path.join(BASE_DIR, 'config', 'params.json'), 'w') as f:
         json.dump(params, f, indent=2)
     sys.argv = ['main.py']
     try:
-        import importlib
-        import main as m
+        import importlib, main as m
         importlib.reload(m)
         m.main()
         with _lock:
@@ -35,14 +27,10 @@ def _run_sim(params: dict) -> None:
         with _lock:
             _estado.update({"error": str(e), "ejecutando": False})
 
-
-# ── UI ────────────────────────────────────────────────────
 @app.route('/')
 def index():
     return render_template('index.html')
 
-
-# ── API ───────────────────────────────────────────────────
 @app.route('/health')
 def health():
     return jsonify({"status": "ok"}), 200
@@ -51,19 +39,15 @@ def health():
 def api_health():
     return jsonify({"status": "ok"}), 200
 
-
 @app.route('/api/simular', methods=['POST'])
 def simular():
     with _lock:
         if _estado['ejecutando']:
             return jsonify({"error": "Simulación en curso"}), 409
     p = request.get_json(silent=True) or {}
-    defaults = {
-        "lambda_base": 10.0, "mu": 4.0, "c": 3,
-        "t_sim": 480.0, "t_warm": 60.0, "N_replicas": 30,
-        "semilla_base": 42, "umbral_wq": 10.0,
-        "t_max_espera": 20.0, "prob_urgente": 0.15,
-    }
+    defaults = {"lambda_base": 10.0, "mu": 4.0, "c": 3, "t_sim": 480.0,
+                "t_warm": 60.0, "N_replicas": 30, "semilla_base": 42,
+                "umbral_wq": 10.0, "t_max_espera": 20.0, "prob_urgente": 0.15}
     params = {**defaults, **p}
     rho = params['lambda_base'] / (params['c'] * params['mu'])
     if rho >= 1.0:
@@ -73,7 +57,6 @@ def simular():
     threading.Thread(target=_run_sim, args=(params,), daemon=True).start()
     return jsonify({"ok": True, "rho": rho}), 202
 
-
 @app.route('/api/estado')
 def estado():
     with _lock:
@@ -81,7 +64,6 @@ def estado():
     if s['inicio']:
         s['segundos'] = round(time.time() - s['inicio'], 1)
     return jsonify(s)
-
 
 @app.route('/api/resultados')
 def resultados():
@@ -91,7 +73,6 @@ def resultados():
     with open(ruta, encoding='utf-8') as f:
         return jsonify(json.load(f))
 
-
 @app.route('/api/grafica/<nombre>')
 def grafica(nombre: str):
     if not nombre.endswith('.png'):
@@ -100,7 +81,6 @@ def grafica(nombre: str):
     if not os.path.exists(ruta):
         abort(404)
     return send_file(ruta, mimetype='image/png')
-
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
