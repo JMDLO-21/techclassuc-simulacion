@@ -1,0 +1,12 @@
+{
+  "lambda_base": 10.0,
+  "mu": 4.0,
+  "c": 3,
+  "t_sim": 480.0,
+  "t_warm": 60.0,
+  "N_replicas": 30,
+  "semilla_base": 42,
+  "umbral_wq": 10.0,
+  "t_max_espera": 20.0,
+  "prob_urgente": 0.15
+}
