@@ -2,7 +2,6 @@
 app_render.py
 =============
 Servidor Flask con UI completa para TechClassUC.
-Sirve el dashboard web y expone la API REST para la simulación.
 """
 from __future__ import annotations
 
@@ -24,11 +23,8 @@ def _run_sim(params: dict) -> None:
     os.makedirs(os.path.join(BASE_DIR, 'config'), exist_ok=True)
     with open(os.path.join(BASE_DIR, 'config', 'params.json'), 'w') as f:
         json.dump(params, f, indent=2)
-
-    # Limpiar sys.argv para que main.py no lea args de Flask
     sys.argv = ['main.py']
     try:
-        # Importar fresh en cada ejecución
         import importlib
         import main as m
         importlib.reload(m)
@@ -47,9 +43,12 @@ def index():
 
 
 # ── API ───────────────────────────────────────────────────
-@app.route('/api/health')
 @app.route('/health')
 def health():
+    return jsonify({"status": "ok"}), 200
+
+@app.route('/api/health')
+def api_health():
     return jsonify({"status": "ok"}), 200
 
 
@@ -58,7 +57,6 @@ def simular():
     with _lock:
         if _estado['ejecutando']:
             return jsonify({"error": "Simulación en curso"}), 409
-
     p = request.get_json(silent=True) or {}
     defaults = {
         "lambda_base": 10.0, "mu": 4.0, "c": 3,
@@ -67,14 +65,11 @@ def simular():
         "t_max_espera": 20.0, "prob_urgente": 0.15,
     }
     params = {**defaults, **p}
-
     rho = params['lambda_base'] / (params['c'] * params['mu'])
     if rho >= 1.0:
         return jsonify({"error": f"Sistema inestable ρ={rho:.3f}"}), 400
-
     with _lock:
         _estado.update({"ejecutando": True, "completado": False, "error": None, "inicio": time.time()})
-
     threading.Thread(target=_run_sim, args=(params,), daemon=True).start()
     return jsonify({"ok": True, "rho": rho}), 202
 
