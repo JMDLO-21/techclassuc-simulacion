@@ -1,55 +1,11 @@
-<<<<<<< HEAD
-FROM python:3.12-slim
-LABEL maintainer="Julián Morales de la Ossa"
-ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 MPLBACKEND=Agg PORT=10000
-WORKDIR /app
-RUN apt-get update && apt-get install -y --no-install-recommends gcc && rm -rf /var/lib/apt/lists/*
-COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
-COPY . .
-RUN mkdir -p outputs reports logs config
-EXPOSE ${PORT}
-=======
-# Dockerfile.render
-# ==================
-# Imagen de producción para despliegue en Render.
-# Basado en python:3.12-slim para mínima superficie de ataque.
-
-FROM python:3.12-slim
-
-# Metadatos
-LABEL maintainer="Julián Morales de la Ossa"
-LABEL description="TechClassUC — Simulación M/M/c con SimPy"
-
-# Variables de entorno
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    MPLBACKEND=Agg \
-    PORT=8000
-
-# Directorio de trabajo
-WORKDIR /app
-
-# Dependencias del sistema (mínimas para matplotlib headless)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copiar e instalar dependencias Python primero (cache de capas)
-COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt && \
-    pip install --no-cache-dir gunicorn flask
-
-# Copiar código fuente
-COPY . .
-
-# Crear directorios de salida
-RUN mkdir -p outputs reports logs config
-
-# Puerto expuesto
-EXPOSE ${PORT}
-
-# Comando de inicio — modo servidor web para Render
->>>>>>> e37cc373d5838385f59daf8b5fdc6bf6d68a4e34
-CMD ["python", "app_render.py"]
+FROM python:3.12-slim 
+LABEL maintainer="Julian Morales de la Ossa" 
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 MPLBACKEND=Agg PORT=10000 
+WORKDIR /app 
+RUN apt-get update && apt-get install -y --no-install-recommends gcc && rm -rf /var/lib/apt/lists/* 
+COPY requirements.txt . 
+RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt 
+COPY . . 
+RUN mkdir -p outputs reports logs config 
+EXPOSE %PORT% 
+CMD ["python", "app_render.py"] 
