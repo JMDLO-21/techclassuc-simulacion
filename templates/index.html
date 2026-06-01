@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechClassUC — Simulación M/M/c</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/main.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ────────────────────────────────────────────── -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⬡</span>
+        <div>
+          <span class="logo-title">TechClassUC</span>
+          <span class="logo-sub">Simulación de Colas M/M/c</span>
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="badge" id="status-badge">⬤ Listo</span>
+        <span class="author">Julián Morales de la Ossa</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN LAYOUT ───────────────────────────────────────── -->
+  <main class="layout">
+
+    <!-- ── SIDEBAR: Parámetros ──────────────────────────── -->
+    <aside class="sidebar">
+      <div class="panel">
+        <h2 class="panel-title">Parámetros</h2>
+
+        <div class="field-group">
+          <label for="lambda_base">λ — Tasa de llegada <span class="unit">clientes/hora</span></label>
+          <input type="number" id="lambda_base" value="10" min="1" max="50" step="0.5" />
+        </div>
+
+        <div class="field-group">
+          <label for="mu">μ — Tasa de servicio <span class="unit">clientes/hora por técnico</span></label>
+          <input type="number" id="mu" value="4" min="0.5" max="30" step="0.5" />
+        </div>
+
+        <div class="field-group">
+          <label for="c">c — Número de técnicos</label>
+          <input type="number" id="c" value="3" min="1" max="20" step="1" />
+        </div>
+
+        <div class="rho-display" id="rho-preview">
+          <span class="rho-label">ρ = λ / (c·μ)</span>
+          <span class="rho-value" id="rho-val">0.833</span>
+          <div class="rho-bar-track"><div class="rho-bar-fill" id="rho-bar"></div></div>
+          <span class="rho-warning" id="rho-warn" style="display:none">⚠ Sistema inestable</span>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="field-group">
+          <label for="N_replicas">Réplicas Montecarlo</label>
+          <input type="number" id="N_replicas" value="30" min="5" max="200" step="5" />
+        </div>
+
+        <div class="field-group">
+          <label for="t_sim">T simulación <span class="unit">minutos</span></label>
+          <input type="number" id="t_sim" value="480" min="60" max="2880" step="60" />
+        </div>
+
+        <div class="field-group">
+          <label for="t_warm">T calentamiento <span class="unit">minutos</span></label>
+          <input type="number" id="t_warm" value="60" min="0" max="300" step="10" />
+        </div>
+
+        <div class="field-group">
+          <label for="umbral_wq">Objetivo Wq <span class="unit">minutos</span></label>
+          <input type="number" id="umbral_wq" value="10" min="1" max="60" step="1" />
+        </div>
+
+        <hr class="divider" />
+        <p class="section-label">Extensiones</p>
+
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" id="usar_prioridad" checked />
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Prioridad urgente</span>
+        </div>
+
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" id="usar_reneging" checked />
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Abandono de cola</span>
+        </div>
+
+        <div class="field-group" id="reneging-field">
+          <label for="t_max_espera">Tiempo máx. espera <span class="unit">minutos</span></label>
+          <input type="number" id="t_max_espera" value="20" min="1" max="120" step="1" />
+        </div>
+
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" id="no_estacionario" />
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Llegadas no estacionarias</span>
+        </div>
+
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" id="usar_welch" checked />
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Warm-up automático (Welch)</span>
+        </div>
+
+        <div class="toggle-row">
+          <label class="toggle">
+            <input type="checkbox" id="usar_optimizacion" checked />
+            <span class="toggle-slider"></span>
+          </label>
+          <span>Optimización automática c</span>
+        </div>
+
+        <div class="field-group">
+          <label for="prob_urgente">P(cliente urgente) <span class="unit">0–1</span></label>
+          <input type="number" id="prob_urgente" value="0.15" min="0" max="1" step="0.05" />
+        </div>
+
+        <button class="btn-run" id="btn-run" onclick="lanzarSimulacion()">
+          <span class="btn-icon">▶</span> Ejecutar Simulación
+        </button>
+
+        <button class="btn-secondary" onclick="cargarResultadosGuardados()">
+          ↻ Cargar últimos resultados
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── CONTENT ───────────────────────────────────────── -->
+    <section class="content">
+
+      <!-- Progress bar -->
+      <div class="progress-wrap" id="progress-wrap" style="display:none">
+        <div class="progress-bar" id="progress-bar"></div>
+        <span class="progress-label" id="progress-label">Iniciando simulación...</span>
+      </div>
+
+      <!-- ── KPIs ─────────────────────────────────────── -->
+      <div class="kpis" id="kpis" style="display:none">
+        <div class="kpi">
+          <span class="kpi-icon">⏱</span>
+          <span class="kpi-label">Wq promedio</span>
+          <span class="kpi-value" id="kpi-wq">—</span>
+          <span class="kpi-unit">min en cola</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-icon">👥</span>
+          <span class="kpi-label">Lq promedio</span>
+          <span class="kpi-value" id="kpi-lq">—</span>
+          <span class="kpi-unit">clientes en cola</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-icon">📊</span>
+          <span class="kpi-label">Utilización ρ</span>
+          <span class="kpi-value" id="kpi-rho">—</span>
+          <span class="kpi-unit">ocupación media</span>
+        </div>
+        <div class="kpi" id="kpi-optimo-box">
+          <span class="kpi-icon">🎯</span>
+          <span class="kpi-label">c óptimo</span>
+          <span class="kpi-value" id="kpi-optimo">—</span>
+          <span class="kpi-unit">técnicos mínimos</span>
+        </div>
+      </div>
+
+      <!-- ── Tabs ──────────────────────────────────────── -->
+      <div class="tabs" id="tabs" style="display:none">
+        <button class="tab active" data-tab="analitico">Analítico</button>
+        <button class="tab" data-tab="graficas">Gráficas</button>
+        <button class="tab" data-tab="sensibilidad">Sensibilidad</button>
+        <button class="tab" data-tab="extensiones">Extensiones</button>
+        <button class="tab" data-tab="reporte">Reporte</button>
+      </div>
+
+      <!-- ── TAB: Analítico ─────────────────────────── -->
+      <div class="tab-panel active" id="panel-analitico">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">⬡</div>
+          <p>Configura los parámetros y ejecuta la simulación.</p>
+          <p class="empty-sub">Los resultados aparecerán aquí.</p>
+        </div>
+
+        <div id="analitico-content" style="display:none">
+          <div class="two-col">
+            <div class="card">
+              <h3 class="card-title">Resultados Analíticos M/M/c</h3>
+              <table class="data-table" id="tabla-analitica"></table>
+            </div>
+            <div class="card">
+              <h3 class="card-title">Resultados Simulación (Montecarlo)</h3>
+              <table class="data-table" id="tabla-simulada"></table>
+            </div>
+          </div>
+          <div class="card mt">
+            <h3 class="card-title">Comparación Analítico vs Simulado</h3>
+            <table class="data-table" id="tabla-comparacion"></table>
+          </div>
+          <div class="card mt">
+            <h3 class="card-title">Intervalos de Confianza 95%</h3>
+            <div id="ic-chart"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── TAB: Gráficas ──────────────────────────── -->
+      <div class="tab-panel" id="panel-graficas">
+        <div class="graficas-grid" id="graficas-grid"></div>
+      </div>
+
+      <!-- ── TAB: Sensibilidad ──────────────────────── -->
+      <div class="tab-panel" id="panel-sensibilidad">
+        <div class="graficas-grid" id="sensibilidad-grid"></div>
+      </div>
+
+      <!-- ── TAB: Extensiones ───────────────────────── -->
+      <div class="tab-panel" id="panel-extensiones">
+        <div class="graficas-grid" id="extensiones-grid"></div>
+      </div>
+
+      <!-- ── TAB: Reporte JSON ──────────────────────── -->
+      <div class="tab-panel" id="panel-reporte">
+        <div class="card">
+          <h3 class="card-title">Reporte completo (JSON)</h3>
+          <pre class="json-view" id="json-view">—</pre>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ── LIGHTBOX ─────────────────────────────────────────── -->
+  <div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
+    <div class="lightbox-inner" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="cerrarLightbox()">✕</button>
+      <img id="lightbox-img" src="" alt="" />
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

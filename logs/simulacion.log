@@ -1,0 +1,60 @@
+2026-06-01 15:40:32,600 [INFO] main: Parámetros cargados desde c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\config\params.json
+2026-06-01 15:40:32,601 [INFO] main: Estabilidad verificada: ρ = 0.8333 < 1  ✓
+2026-06-01 15:40:32,628 [INFO] sensibilidad: Welch warm-up estimado: 84.0 minutos (índice=14)
+2026-06-01 15:40:33,417 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\11_welch_warmup.png
+2026-06-01 15:40:33,890 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\01_evolucion_temporal.png
+2026-06-01 15:40:34,423 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\10_reneging_abandonos.png
+2026-06-01 15:40:34,897 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\09_llegadas_no_estacionarias.png
+2026-06-01 15:40:35,511 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\02_histograma_wq.png
+2026-06-01 15:40:35,786 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\05_distribucion_medias_replicas.png
+2026-06-01 15:40:36,838 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\06_heatmap_wq.png
+2026-06-01 15:40:37,427 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\07_heatmap_rho.png
+2026-06-01 15:40:37,659 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\03_wq_vs_servidores.png
+2026-06-01 15:40:37,908 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\04_rho_vs_lambda.png
+2026-06-01 15:40:38,143 [INFO] visualizacion: Gráfica guardada: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\08_optimizacion_servidores.png
+2026-06-01 15:40:38,145 [INFO] main: Reporte JSON guardado: c:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\reports\reporte_final.json
+2026-06-01 15:42:11,291 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:11] "GET /api/estado HTTP/1.1" 200 -
+2026-06-01 15:42:11,891 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:11] "GET /api/estado HTTP/1.1" 200 -
+2026-06-01 15:42:12,452 [INFO] main: Parámetros cargados desde C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\config\params.json
+2026-06-01 15:42:12,452 [INFO] main: Estabilidad verificada: ρ = 0.8333 < 1  ✓
+2026-06-01 15:42:12,469 [INFO] sensibilidad: Welch warm-up estimado: 84.0 minutos (índice=14)
+2026-06-01 15:42:12,697 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\11_welch_warmup.png
+2026-06-01 15:42:12,894 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\01_evolucion_temporal.png
+2026-06-01 15:42:13,090 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:13] "GET /api/estado HTTP/1.1" 200 -
+2026-06-01 15:42:13,171 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\10_reneging_abandonos.png
+2026-06-01 15:42:13,405 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\09_llegadas_no_estacionarias.png
+2026-06-01 15:42:13,672 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:13] "GET /api/estado HTTP/1.1" 200 -
+2026-06-01 15:42:13,752 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\02_histograma_wq.png
+2026-06-01 15:42:13,999 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\05_distribucion_medias_replicas.png
+2026-06-01 15:42:14,740 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\06_heatmap_wq.png
+2026-06-01 15:42:14,890 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:14] "GET /api/estado HTTP/1.1" 200 -
+2026-06-01 15:42:15,076 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\07_heatmap_rho.png
+2026-06-01 15:42:15,283 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\03_wq_vs_servidores.png
+2026-06-01 15:42:15,470 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:15] "GET /api/estado HTTP/1.1" 200 -
+2026-06-01 15:42:15,499 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\04_rho_vs_lambda.png
+2026-06-01 15:42:15,720 [INFO] visualizacion: Gráfica guardada: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\outputs\08_optimizacion_servidores.png
+2026-06-01 15:42:15,722 [INFO] main: Reporte JSON guardado: C:\Users\LENOVO\Downloads\TechClassUC_SimulacionMMC 2\proyecto\reports\reporte_final.json
+2026-06-01 15:42:16,686 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:16] "GET /api/estado HTTP/1.1" 200 -
+2026-06-01 15:42:17,118 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:17] "GET /api/resultados HTTP/1.1" 200 -
+2026-06-01 15:42:17,464 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:17] "HEAD /api/grafica/01_evolucion_temporal.png?t=1780346537121 HTTP/1.1" 200 -
+2026-06-01 15:42:17,725 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:17] "HEAD /api/grafica/02_histograma_wq.png?t=1780346537467 HTTP/1.1" 200 -
+2026-06-01 15:42:17,787 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:17] "HEAD /api/grafica/03_wq_vs_servidores.png?t=1780346537731 HTTP/1.1" 200 -
+2026-06-01 15:42:18,063 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:18] "HEAD /api/grafica/04_rho_vs_lambda.png?t=1780346537789 HTTP/1.1" 200 -
+2026-06-01 15:42:18,125 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:18] "HEAD /api/grafica/05_distribucion_medias_replicas.png?t=1780346538070 HTTP/1.1" 200 -
+2026-06-01 15:42:18,396 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:18] "HEAD /api/grafica/06_heatmap_wq.png?t=1780346538128 HTTP/1.1" 200 -
+2026-06-01 15:42:18,446 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:18] "HEAD /api/grafica/07_heatmap_rho.png?t=1780346538398 HTTP/1.1" 200 -
+2026-06-01 15:42:18,758 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:18] "HEAD /api/grafica/08_optimizacion_servidores.png?t=1780346538448 HTTP/1.1" 200 -
+2026-06-01 15:42:18,781 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:18] "HEAD /api/grafica/09_llegadas_no_estacionarias.png?t=1780346538760 HTTP/1.1" 200 -
+2026-06-01 15:42:19,116 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:19] "HEAD /api/grafica/10_reneging_abandonos.png?t=1780346538801 HTTP/1.1" 200 -
+2026-06-01 15:42:19,371 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:42:19] "HEAD /api/grafica/11_welch_warmup.png?t=1780346539120 HTTP/1.1" 200 -
+2026-06-01 15:45:14,759 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:14] "GET /api/grafica/01_evolucion_temporal.png?t=1780346537121 HTTP/1.1" 200 -
+2026-06-01 15:45:14,760 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:14] "GET /api/grafica/02_histograma_wq.png?t=1780346537467 HTTP/1.1" 200 -
+2026-06-01 15:45:14,763 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:14] "GET /api/grafica/03_wq_vs_servidores.png?t=1780346537731 HTTP/1.1" 200 -
+2026-06-01 15:45:14,765 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:14] "GET /api/grafica/04_rho_vs_lambda.png?t=1780346537789 HTTP/1.1" 200 -
+2026-06-01 15:45:14,768 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:14] "GET /api/grafica/05_distribucion_medias_replicas.png?t=1780346538070 HTTP/1.1" 200 -
+2026-06-01 15:45:39,721 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:39] "GET /api/grafica/06_heatmap_wq.png?t=1780346538128 HTTP/1.1" 200 -
+2026-06-01 15:45:40,024 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:40] "GET /api/grafica/07_heatmap_rho.png?t=1780346538398 HTTP/1.1" 200 -
+2026-06-01 15:45:49,742 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:49] "GET /api/grafica/08_optimizacion_servidores.png?t=1780346538448 HTTP/1.1" 200 -
+2026-06-01 15:45:49,744 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:49] "GET /api/grafica/11_welch_warmup.png?t=1780346539120 HTTP/1.1" 200 -
+2026-06-01 15:45:49,748 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:49] "GET /api/grafica/10_reneging_abandonos.png?t=1780346538801 HTTP/1.1" 200 -
+2026-06-01 15:45:49,759 [INFO] werkzeug: 127.0.0.1 - - [01/Jun/2026 15:45:49] "GET /api/grafica/09_llegadas_no_estacionarias.png?t=1780346538760 HTTP/1.1" 200 -

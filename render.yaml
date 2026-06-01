@@ -1,0 +1,35 @@
+## render.yaml
+## Configuración de despliegue en Render para TechClassUC.
+## Referencia: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: techclassuc-simulacion
+    runtime: docker
+    dockerfilePath: ./Dockerfile.render
+    autoDeploy: true
+
+    # Variables de entorno
+    envVars:
+      - key: PYTHONDONTWRITEBYTECODE
+        value: "1"
+      - key: PYTHONUNBUFFERED
+        value: "1"
+      - key: MPLBACKEND
+        value: "Agg"
+      - key: PORT
+        value: "10000"
+
+    # Health check
+    healthCheckPath: /health
+
+    # Recursos (plan gratuito de Render)
+    plan: free
+
+    # Región
+    region: oregon
+
+    # Puertos
+    ports:
+      - port: 10000
+        protocol: TCP

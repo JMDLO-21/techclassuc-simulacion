@@ -1,0 +1,16 @@
+{
+  "lambda_base": 10,
+  "mu": 4,
+  "c": 3,
+  "t_sim": 480,
+  "t_warm": 60,
+  "N_replicas": 30,
+  "semilla_base": 42,
+  "umbral_wq": 10,
+  "t_max_espera": 20,
+  "prob_urgente": 0.15,
+  "usar_prioridad": true,
+  "no_estacionario": false,
+  "usar_welch": true,
+  "usar_optimizacion": true
+}
