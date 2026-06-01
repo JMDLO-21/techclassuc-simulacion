@@ -2,7 +2,4 @@ simpy==4.1.1
 numpy>=1.26.0
 matplotlib>=3.8.0
 scipy>=1.11.0
-<<<<<<< HEAD
 flask>=3.0.0
-=======
->>>>>>> e37cc373d5838385f59daf8b5fdc6bf6d68a4e34
